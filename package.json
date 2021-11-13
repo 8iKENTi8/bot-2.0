@@ -1,0 +1,16 @@
+{
+  "dependencies": {
+    "discord.js": "^13.3.1"
+  },
+  "name": "bot-2.0",
+  "version": "1.0.0",
+  "main": "Client.js",
+  "devDependencies": {},
+  "scripts": {
+    "dev": "nodemon Client"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": ""
+}
