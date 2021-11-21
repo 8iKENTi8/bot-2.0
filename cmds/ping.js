@@ -1,20 +1,38 @@
-module.exports = async (bot,msg,args,argsF) => {
+module.exports = async (bot,message,args,argsF) => {
 
-  console.log(args, argsF);
 
-  if(args[0] == "пошёл" && args[1]=="нафиг"||args[1]=="нахер"){
-    msg.channel.send({
-        content: "Нюхай бебру , чмо",
-        tts: true
+   
+  if(args[0]== 'животное?'){
+    message.channel.send({
+        tts: true,
+        content: "Так точно капитан"
     })
-    return 'success bebra'
+    return
   }
-        msg.channel.send({
-            content: "Схс схс схс схс ,ахаххахаха",
-            tts: true
-        })
-    
-        return 'success'
+message.channel.send({
+    tts: true,
+    content: "Привет чуууурос, занюхнииии,мммммммммммммммммм,бебрааааааааа ай ай ай"
+})
+  
+  
 };
-
-module.exports.names = ["саня", "sanya"]
+module.exports.names = ["ping", "пинг", "бебра", "андрей"];
+module.exports.interaction = {
+  name: 'ping',
+  description: 'Просто проверочная команда, ничего больше',
+  options: [
+      {
+          name: "any",
+          description: "Другие настройки команды ping",
+          type: "STRING",
+        choices: [
+              {
+                  name: "pingx2",
+                  value: "ping"
+              }
+          ],
+          required: false
+      },
+  ],
+  defaultPermission: true
+};
