@@ -5,7 +5,8 @@ const User = new mng.Schema({
    username: {
        type: String,
        default: "user"
-   }
+   },
+   nt: String
 })
 
 module.exports = mng.model('User', User)

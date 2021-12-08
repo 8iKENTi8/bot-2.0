@@ -167,7 +167,8 @@ const User = mng.Schema({ //Создание схемы
     username: {
         type: String,
         default: "user"
-    }
+    },
+    nt: String
 });
 const MyModel = mng.model('User', User, 'Users'); //Создание модели
 bot.Users = MyModel

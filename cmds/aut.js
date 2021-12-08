@@ -1,0 +1,59 @@
+const { connection} = require('../DB/conDb');
+module.exports = async (bot,message,args,argsF) => {
+
+    const cont = argsF.join(" ")
+
+    if(cont==""){
+        message.delete()
+
+      
+       return message.channel.send("Для авторизации введите пароль после !auth")
+   }
+
+   connection.query('SELECT * FROM `users` WHERE `users`.`id` = ? AND `users`.`pass` = ? ',
+   [message.author.id, cont], async (err,res,fields)=>{
+       if(err)
+          return console.log(err.message);
+  
+          if(!res.length ==0) {
+
+            // setTimeout(()=>{
+            //     bot.message.delete()
+            // },3000)
+
+            message.delete()
+            
+               message.channel.send("Авторизация прошла успешно ")
+
+               if(res[0].id_r==2){
+                message.channel.send(({
+                    embeds: [{
+                        title: "Доступные функции пользователя",
+                        description:  "!My_appreciations\n!Mysuggestions\n!My_visitability"
+                    }]}))
+               }
+               if(res[0].id_r==1){
+                message.channel.send(({
+                    embeds: [{
+                        title: "Доступные функции админа",
+                        description:  "!My_appreciations\n!Mysuggestions\n!My_visitability\n!All_users"
+                    }]}))
+               }
+               
+                 
+               
+               
+             
+
+            }
+            else{
+                message.delete()
+                return message.channel.send("Неккоректные данные")
+                
+            }})
+    };
+    
+
+    module.exports.names = ["!auth"];
+ 
+    
