@@ -5,17 +5,17 @@ module.exports = async (bot, msg) => {
     
     if(msg.author.bot) return
 
-  const User = await bot.Users.findOne({id: msg.author.id}); //Создание новой записи в DB
+//   const User = await bot.Users.findOne({id: msg.author.id}); //Создание новой записи в DB
    
-    const notes = bot.Memory.users[msg.author.id].notes.join("\n")
-    if(User == null) {
-        const newUser = new bot.Users({
-            id: msg.author.id,
-            username: msg.author.username,
-            nt: notes
-        });
-        newUser.save();
-    }
+//     const notes = bot.Memory.users[msg.author.id].notes.join("\n")
+//     if(User == null) {
+//         const newUser = new bot.Users({
+//             id: msg.author.id,
+//             username: msg.author.username,
+//             nt: notes
+//         });
+//         newUser.save();
+//     }
     
     // const notes = bot.Memory.users[message.author.id].notes.join("\n")
     

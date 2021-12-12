@@ -1,11 +1,10 @@
 const mysql = require("mysql");
 
-
-
  process.argv[1]= 0
 
 const connection = mysql.createConnection({
     host: "localhost",
+    port: "3307",
     user: "root",
     database: "bot_discrod",
     password: "root"
@@ -21,4 +20,4 @@ const connection = mysql.createConnection({
       }
    });
 
-   module.exports = {connection}
+   module.exports = connection

@@ -3,19 +3,19 @@ const Discord = require('discord.js'),
     config = require('./config.json')
 config.cfg.intents = new Discord.Intents(config.cfg.intents)
 
-const mng = require('mongoose')
-const DB_URL = 'mongodb+srv://vladimir:63ugepuz@cluster0.lpnwi.mongodb.net/myFirstDatabase'
+// const mng = require('mongoose')
+// const DB_URL = 'mongodb+srv://vladimir:63ugepuz@cluster0.lpnwi.mongodb.net/myFirstDatabase'
 
-async function startApp() {
-    try {
-    await mng.connect(DB_URL)
-     console.log("DB connect");
-    } catch (e) {
-        console.log(e);
-    }
- }
+// async function startApp() {
+//     try {
+//     await mng.connect(DB_URL)
+//      console.log("DB connect");
+//     } catch (e) {
+//         console.log(e);
+//     }
+//  }
 
- startApp()
+//  startApp()
 
 const bot = new Discord.Client(config.cfg)
 bot.login(config.token)
@@ -162,13 +162,13 @@ for(let keys in bot.Memory.users) { //Обновлятель памяти
 }
 
 
-const User = mng.Schema({ //Создание схемы
-    id: String,
-    username: {
-        type: String,
-        default: "user"
-    },
-    nt: String
-});
-const MyModel = mng.model('User', User, 'Users'); //Создание модели
-bot.Users = MyModel
+// const User = mng.Schema({ //Создание схемы
+//     id: String,
+//     username: {
+//         type: String,
+//         default: "user"
+//     },
+//     nt: String
+// });
+// const MyModel = mng.model('User', User, 'Users'); //Создание модели
+// bot.Users = MyModel
