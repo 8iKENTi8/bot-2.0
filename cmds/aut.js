@@ -41,6 +41,13 @@ module.exports = async (bot,message,args,argsF) => {
                         description:  "!My_appreciations\n!Mysuggestions\n!My_visitability\n!All_users"
                     }]}))
                }
+               if(res[0].id_r==3){
+                message.channel.send(({
+                    embeds: [{
+                        title: "Доступные функции Админ",
+                        description:  "!My_appreciations\n!Mysuggestions\n!My_visitability\n!All_users\nGive_elder"
+                    }]}))
+               }
                
                  
                

@@ -71,6 +71,10 @@ module.exports = async (bot,message,args,argsF) => {
  
          message.delete()
          message.channel.send("Регистрация прошла успешно")
+         
+         var role = message.guild.roles.cache.find(role => role.id === "931628294409945138")
+         var user = message.guild.members.cache.get(message.author.id);
+         user.roles.add(role)    
        
         })
           //Завершение строки добавления
@@ -113,10 +117,6 @@ module.exports = async (bot,message,args,argsF) => {
         return console.log("Регистрация не была произведена");
         
     })
-    
-    
-    
-
     
    
  

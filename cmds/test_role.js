@@ -5,7 +5,16 @@ module.exports = async (bot,message,args,argsF) => {
 
     var role = message.guild.roles.cache.find(role => role.id === "931628294409945138")
     var user = message.guild.members.cache.get(message.author.id);
-    user.roles.add(role)    
+   console.log(user.roles);
+
+   
+    console.log(message.author.id);
+
+
+    const devID = '257871068532834304';
+     const dev = await bot.fetchUser(devID);
+
+     console.log(dev);
 
     // member.roles.add(role);
 
@@ -18,10 +27,7 @@ module.exports = async (bot,message,args,argsF) => {
     // // console.log(role.id);
 
     //  memberObj.addRole(931628294409945138).catch(console.error);
-    // message.mentions.roles.forEach(role => {
-//     console.log(role.id);
-    
-// }
+ 
 
 };
 

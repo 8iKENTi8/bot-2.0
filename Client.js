@@ -60,6 +60,9 @@ bot.createGuild = (message) => {
         warns: 0
     }
 }
+
+
+
 bot.createUser = (message) => {
     return {
         id: message.author.id,
