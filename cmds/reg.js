@@ -65,7 +65,7 @@ module.exports = async (bot,message,args,argsF) => {
         console.log(student);
           //Строка для добавления пользователя
           con.query('INSERT INTO `users` (`id`, `id_s`, `pass`, `id_r`) VALUES (?, ?, ?, ?)',
-          [message.author.id,student,res1[3],2], async (err,res,fields)=>{
+          [message.author.id,student,res1[3],1], async (err,res,fields)=>{
       if(err)
          return console.log(err.message);
  

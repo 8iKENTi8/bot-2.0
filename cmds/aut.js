@@ -1,5 +1,7 @@
-const { connection} = require('../DB/conDb');
+var con = require('../DB/conDb');
 module.exports = async (bot,message,args,argsF) => {
+
+       // OTA3NjEzNDkwODU0OTIwMjIy.YYpu7g.pUEzFnCtPIvQjnIfRdclAKZDDis
 
     const cont = argsF.join(" ")
 
@@ -10,7 +12,7 @@ module.exports = async (bot,message,args,argsF) => {
        return message.channel.send("Для авторизации введите пароль после !auth")
    }
 
-   connection.query('SELECT * FROM `users` WHERE `users`.`id` = ? AND `users`.`pass` = ? ',
+   con.query('SELECT * FROM `users` WHERE `users`.`id` = ? AND `users`.`pass` = ? ',
    [message.author.id, cont], async (err,res,fields)=>{
        if(err)
           return console.log(err.message);
@@ -25,17 +27,17 @@ module.exports = async (bot,message,args,argsF) => {
             
                message.channel.send("Авторизация прошла успешно ")
 
-               if(res[0].id_r==2){
+               if(res[0].id_r==1){
                 message.channel.send(({
                     embeds: [{
                         title: "Доступные функции пользователя",
                         description:  "!My_appreciations\n!Mysuggestions\n!My_visitability"
                     }]}))
                }
-               if(res[0].id_r==1){
+               if(res[0].id_r==2){
                 message.channel.send(({
                     embeds: [{
-                        title: "Доступные функции админа",
+                        title: "Доступные функции Старосты",
                         description:  "!My_appreciations\n!Mysuggestions\n!My_visitability\n!All_users"
                     }]}))
                }
