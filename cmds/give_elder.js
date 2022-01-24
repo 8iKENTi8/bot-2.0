@@ -14,7 +14,7 @@ module.exports = async (bot,message,args,argsF) => {
     // 933467032291266610 преподоавтель
     // 931628294409945138 студент
     // 879638814098866217 абобус главный
-    // 933467032291266610 староста
+    // 257871068532834304 староста
 
   
 
@@ -61,9 +61,22 @@ module.exports = async (bot,message,args,argsF) => {
          message.delete()
          message.channel.send("Роль у пользователя изменилась")
          
-         var role = message.guild.roles.cache.find(role => role.id === "933467032291266610")
-         var user = message.guild.members.cache.get(message.author.id);
-         user.roles.add(role)    
+        //  var role = message.guild.roles.cache.find(role => role.id === "933467032291266610")
+        //  var user = await bot.users.fetch(id_u).catch(console.error);
+        //  console.log(user);
+
+        const memberID = id_u;   // you want to add/remove roles. Only members have roles not users. So, that's why I named the variable memberID for keeping it clear.
+        const roleID = '933483006511972352';
+
+        const guild = bot.guilds.cache.get('859156583928561705');  
+        const role = guild.roles.cache.get(roleID);  
+        const member = await guild.members.fetch(memberID); 
+        member.roles.add(role);   
+         
+
+         
+        //  var user = message.guild.members.cache.get(message.author.id);
+        //   user.UpdateRole(role.id)
         //  console.log(id_u);
        
         })
