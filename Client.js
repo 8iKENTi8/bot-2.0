@@ -3,20 +3,6 @@ const Discord = require('discord.js'),
     config = require('./config.json')
 config.cfg.intents = new Discord.Intents(config.cfg.intents)
 
-// const mng = require('mongoose')
-// const DB_URL = 'mongodb+srv://vladimir:63ugepuz@cluster0.lpnwi.mongodb.net/myFirstDatabase'
-
-// async function startApp() {
-//     try {
-//     await mng.connect(DB_URL)
-//      console.log("DB connect");
-//     } catch (e) {
-//         console.log(e);
-//     }
-//  }
-
-//  startApp()
-
 const bot = new Discord.Client(config.cfg)
 bot.login(config.token)
 
@@ -62,7 +48,6 @@ bot.createGuild = (message) => {
 }
 
 
-
 bot.createUser = (message) => {
     return {
         id: message.author.id,
@@ -89,6 +74,36 @@ const msg = {
         username: "1"
     }
 };
+
+
+
+const PREFIX = '*';
+const _CMD_HELP        = PREFIX + 'help';
+const _CMD_JOIN        = PREFIX + 'join';
+const _CMD_LEAVE       = PREFIX + 'leave';
+const _CMD_DEBUG       = PREFIX + 'debug';
+const _CMD_TEST        = PREFIX + 'hello';
+const _CMD_LANG        = PREFIX + 'lang';
+
+const guildMap = new Map();
+
+
+
+
+bot.on = async (message) => {
+    if (!('guild' in message) || !message.guild) return; // prevent private messages to bot
+        const mapKey = message.guild.id;
+        if (message.content.trim().toLowerCase() == _CMD_JOIN) {
+            if (!message.member.voice.channelID) {
+                message.reply('Error: please join a voice channel first.')
+            } else 
+                if (!guildMap.has(mapKey))
+                    await connect(message, mapKey)
+                else
+                message.reply('Already connected')
+}
+}
+
 
 
 for(let keys in bot.Memory.guilds) { //Обновлятель памяти
@@ -165,13 +180,3 @@ for(let keys in bot.Memory.users) { //Обновлятель памяти
 }
 
 
-// const User = mng.Schema({ //Создание схемы
-//     id: String,
-//     username: {
-//         type: String,
-//         default: "user"
-//     },
-//     nt: String
-// });
-// const MyModel = mng.model('User', User, 'Users'); //Создание модели
-// bot.Users = MyModel
